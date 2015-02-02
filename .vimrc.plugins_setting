@@ -1,0 +1,132 @@
+"-------------------------------------------------------------------------------
+" プラグインごとの設定 Plugins
+"-------------------------------------------------------------------------------
+
+"---------------------------------------
+" vim-indent-guides
+"---------------------------------------
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_auto_colors=0
+"let g:indent_guides_color_change_percent = 30
+let g:indent_guides_guide_size=1
+augroup indentguides
+ autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=236
+ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=234
+augroup END
+
+"---------------------------------------
+" nerdtree
+"---------------------------------------
+" 引数なしで実行したとき、NERDTreeを実行する
+let file_name = expand("%:p")
+if has('vim_starting') &&  file_name == ""
+    autocmd VimEnter * call ExecuteNERDTree()
+endif
+
+" カーソルが外れているときは自動的にnerdtreeを隠す
+function! ExecuteNERDTree()
+    "b:nerdstatus = 1 : NERDTree 表示中
+    "b:nerdstatus = 2 : NERDTree 非表示中
+
+    if !exists('g:nerdstatus')
+        execute 'NERDTree ./'
+        let g:windowWidth = winwidth(winnr())
+        let g:nerdtreebuf = bufnr('')
+        let g:nerdstatus = 1
+
+    elseif g:nerdstatus == 1
+        execute 'wincmd t'
+        execute 'vertical resize' 0
+        execute 'wincmd p'
+        let g:nerdstatus = 2
+    elseif g:nerdstatus == 2
+        execute 'wincmd t'
+        execute 'vertical resize' g:windowWidth
+        let g:nerdstatus = 1
+
+    endif
+endfunction
+noremap <c-e> :<c-u>:call ExecuteNERDTree()<cr>
+
+" 隠しファイルを表示
+let g:NERDTreeShowHidden = 1
+
+"---------------------------------------
+" nerdcommenter
+"---------------------------------------
+" Nerd_Commenter の基本設定
+let g:NERDCreateDefaultMappings = 0
+let NERDSpaceDelims = 1
+
+nmap <Leader>c <Plug>NERDCommenterToggle
+vmap <Leader>c <Plug>NERDCommenterToggle
+nmap <Leader>cc <Plug>NERDCommenterAlignLeft
+vmap <Leader>cc <Plug>NERDCommenterAlignLeft
+vmap <Leader>C <Plug>NERDCommenterMinimal
+"nmap <Leader>/a <Plug>NERDCommenterAppend
+"nmap <leader>/9 <Plug>NERDCommenterToEOL
+"vmap <Leader>/s <Plug>NERDCommenterSexy
+"nmap <Leader>x <Plug>NERDCommenterUncomment
+"vmap <Leader>x <Plug>NERDCommenterUncomment
+
+"---------------------------------------
+" Unite
+"---------------------------------------
+" バッファ一覧
+noremap <C-U><C-B> :Unite buffer<CR>
+" ファイル一覧
+noremap <C-U><C-F> :Unite -buffer-name=file file<CR>
+" 最近使ったファイルの一覧
+noremap <C-Z> :Unite file_mru<CR>
+
+"---------------------------------------
+" neocomplecache
+"---------------------------------------
+let g:neocomplecache_enable_at_startup=1
+
+"phpmanualの設定
+let g:ref_phpmanual_path = $HOME.'/.vim/php-chunked-xhtml'
+nmap ,rp :<C-u>Ref phpmanual<Space>
+
+"---------------------------------------
+" emmet-vim
+"---------------------------------------
+let g:user_emmet_settings = {
+\   'lang': 'ja',
+\   'html': {
+\     'snippets': {
+\       'jq': '<script src="//code.jquery.com/jquery-1.8.3.min.js"></script>' . "\n" .
+\             '<script>' . "\n" .
+\             '\$(function() {' . "\n" .
+\             '  ${cursor}' . "\n" .
+\             '});' . "\n" .
+\             '</script>',
+\       'bs': '<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">' . "\n" .
+\             '<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>',
+\       'fa': '<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">',
+\       'tm': "setTimeout(function() {\n\t\\${cursor}\n}, 100);",
+\       'mc': "<meta charset=\"utf-8\">\n|",
+\     },
+\   },
+\   'php': {
+\     'extends': 'html',
+\     'snippets': {
+\       'pr': "echo '<pre>' . print_r(\\$|, true) . '</pre>';",
+\     },
+\   },
+\   'jade': {
+\     'extends': 'html, php',
+\   },
+\ }
+
+"---------------------------------------
+" cake.vim
+"---------------------------------------
+let g:cakephp_enable_auto_mode = 1
+
+"---------------------------------------
+" vim-markdown
+"---------------------------------------
+let g:vim_markdown_folding_disabled = 1
+
+

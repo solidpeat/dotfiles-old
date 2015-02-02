@@ -1,0 +1,79 @@
+"vundleの設定
+
+set nocompatible               " be iMproved
+filetype off                   " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required!
+Bundle 'gmarik/vundle'
+
+" My Bundles here:
+
+" original repos on github
+"---------------------------------------
+"リファレンスを使いやすくするやつ
+Bundle 'thinca/vim-ref'
+"インデントを見やすく
+Bundle 'nathanaelkane/vim-indent-guides'
+"ステータスラインをかっこよく
+Bundle 'Lokaltog/vim-powerline'
+"ツリー表示
+Bundle 'scrooloose/nerdtree'
+"なんかすごそうなやつ
+Bundle 'Shougo/unite.vim'
+"カラースキーマの切り替え
+Bundle 'ujihisa/unite-colorscheme'
+"補完
+"Bundle 'Shougo/neocomplcache'
+"Bundle 'Shougo/neocomplcache-snippets-complete'
+"非同期実行
+Bundle 'Shougo/vimproc'
+" CakePHP用拡張
+Bundle 'violetyk/cake.vim'
+" 最強コメント処理 (<Leader>c<space>でコメントをトグル)
+Bundle 'scrooloose/nerdcommenter.git'
+" Emmet(Zen-coding)
+" Bundle 'mattn/zencoding-vim'
+Bundle 'mattn/emmet-vim'
+" Evernote
+" Bundle 'kakkyz81/evervim'
+" CoffeeScript
+Bundle 'kchmck/vim-coffee-script'
+" markdownのsyntax highlight
+Bundle 'plasticboy/vim-markdown'
+" jadeのsyntax highlight
+Bundle 'digitaltoad/vim-jade'
+
+" vim-scripts repos
+"---------------------------------------
+"Twitter
+Bundle 'TwitVim'
+" Twigのsyntax highlight用
+" htmljinja.vimはリポジトリがなかったので直DLで.vim/syntaxに置いた
+Bundle 'Jinja'
+
+" molokai カラースキーム
+Bundle 'tomasr/molokai'
+" solarized カラースキーム
+"Bundle 'altercation/vim-colors-solarized'
+" mustang カラースキーム
+"Bundle 'croaker/mustang-vim'
+" wombat カラースキーム
+"Bundle 'jeffreyiacono/vim-colors-wombat'
+" jellybeans カラースキーム
+"Bundle 'nanotech/jellybeans.vim'
+" lucius カラースキーム
+"Bundle 'vim-scripts/Lucius'
+" zenburn カラースキーム
+"Bundle 'vim-scripts/Zenburn'
+" mrkn256 カラースキーム
+"Bundle 'mrkn/mrkn256.vim'
+" railscasts カラースキーム
+"Bundle 'jpo/vim-railscasts-theme'
+" pyte カラースキーム
+"Bundle 'therubymug/vim-pyte'
+
+filetype plugin indent on     " required!

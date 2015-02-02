@@ -1,0 +1,56 @@
+"-------------------------------------------------------------------------------
+" 表示 Apperance
+"-------------------------------------------------------------------------------
+set showmatch         " 括弧の対応をハイライト
+set matchtime=1       " ハイライトの表示時間（秒）
+set number            " 行番号表示
+set list              " 不可視文字表示
+"set listchars=tab:^\ ,trail:-,eol:¶,extends:»,precedes:«,nbsp:%
+set listchars=tab:^\ ,trail:_,extends:>,precedes:< " 不可視文字の表示形式
+set display=uhex      " 印字不可能文字を16進数で表示
+
+" 全角スペースの表示
+"highlight ZenkakuSpace cterm=underline ctermbg=lightblue guibg=darkgray
+"match ZenkakuSpace /　/
+" Vim-users.jp - Hack #40: 不可視文字を表示する
+" http://vim-users.jp/2009/07/hack40/
+highlight IdeographicSpace term=underline ctermbg=DarkGreen guibg=DarkGreen
+augroup highlightIdegraphicSpace
+  autocmd!
+  autocmd Colorscheme * highlight IdeographicSpace term=underline ctermbg=DarkGreen guibg=DarkGreen
+  autocmd VimEnter,WinEnter * match IdeographicSpace /　/
+augroup END
+
+" カーソル行をハイライト
+set cursorline
+" カレントウィンドウにのみ罫線を引く
+augroup cch
+  autocmd! cch
+  autocmd WinLeave * set nocursorline
+  autocmd WinEnter,BufRead * set cursorline
+augroup END
+
+hi clear CursorLine
+hi CursorLine gui=underline
+"highlight CursorLine ctermbg=black guibg=black
+
+" コマンド実行中は再描画しない
+"set lazyredraw
+" 高速ターミナル接続を行う
+"set ttyfast
+
+" カラースキーマ
+syntax on
+set t_Co=256
+colorscheme molokai
+"colorscheme solarized
+"colorscheme zenburn
+"colorscheme desert
+"colorscheme desert256
+"colorscheme jellybeans
+"colorscheme Tomorrow-Night-Bright
+
+" Twigのsyntax highlight
+autocmd BufNewFile,BufRead *.tpl set filetype=htmljinja
+autocmd BufNewFile,BufRead *.twig set filetype=htmljinja
+

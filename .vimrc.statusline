@@ -1,0 +1,15 @@
+"-------------------------------------------------------------------------------
+" ステータスライン StatusLine
+"-------------------------------------------------------------------------------
+set laststatus=2   " 常にステータスラインを表示
+set ruler          " カーソルが何行目の何列目に置かれているかを表示する
+
+" vim-powerlineでフォントにパッチを当てないなら以下をコメントアウト
+let g:Powerline_symbols = 'fancy'
+
+
+"自動的に QuickFix リストを表示する
+autocmd QuickfixCmdPost make,grep,grepadd,vimgrep,vimgrepadd cwin
+autocmd QuickfixCmdPost lmake,lgrep,lgrepadd,lvimgrep,lvimgrepadd lwin
+
+

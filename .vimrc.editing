@@ -1,0 +1,61 @@
+"-------------------------------------------------------------------------------
+" 編集関連 Edit
+"-------------------------------------------------------------------------------
+
+" insertモードを抜けるとIMEオフ
+" 以下Winのみ？
+"set noimdisable
+"set iminsert=0 imsearch=0
+"set noimcmdline
+"inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
+"inoremap :set iminsert=0
+
+" タブの代わりに空白文字を挿入する
+set expandtab
+" 行頭の余白内で Tab を打ち込むと、'shiftwidth' の数だけインデントする。
+set smarttab
+" ファイル内の <Tab> が対応する空白の数
+set tabstop=2
+
+" コンマの後に自動的にスペースを挿入
+"inoremap , ,<Space>
+
+" 括弧を自動補完
+"inoremap { {}<LEFT>
+"inoremap [ []<LEFT>
+"inoremap ( ()<LEFT>
+"inoremap " ""<LEFT>
+"inoremap ' ''<LEFT>
+"vnoremap { "zdi^V{<C-R>z}<ESC>
+"vnoremap [ "zdi^V[<C-R>z]<ESC>
+"vnoremap ( "zdi^V(<C-R>z)<ESC>
+"vnoremap " "zdi^V"<C-R>z^V"<ESC>
+"vnoremap ' "zdi'<C-R>z'<ESC>
+
+" バックアップファイルを作るディレクトリ
+set backupdir=$HOME/dotfiles/.vim/vimbackup
+" スワップファイル用のディレクトリ
+set directory=$HOME/dotfiles/.vim/vimbackup
+"シフト移動幅
+set shiftwidth=2
+"新しい行を作ったときに高度な自動インデントを行う
+set smartindent
+
+" 保存時に行末の空白を除去する
+autocmd BufWritePre * :%s/\s\+$//ge
+" 保存時にtabをスペースに変換する
+autocmd BufWritePre * :%s/\t/  /ge
+" 保存時に^Mを削除する
+autocmd BufWritePre * :%s///ge
+
+" 日時の自動入力
+"inoremap <expr> ,df strftime('%Y/%m/%d %H:%M:%S')
+"inoremap <expr> ,dd strftime('%Y/%m/%d')
+"inoremap <expr> ,dt strftime('%H:%M:%S')
+
+" 行の折り返し
+nnoremap <Leader>w :set wrap!<CR>
+
+" ☆とかがずれるのに対応（できてない）
+set ambiwidth=double
+

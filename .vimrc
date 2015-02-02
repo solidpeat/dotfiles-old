@@ -1,22 +1,21 @@
-"vundleの設定
+" プラグインの読み込み
+source ~/dotfiles/.vimrc.bundle
 
-set nocompatible               " be iMproved
-filetype off                   " required!
+" 基本設定
+source ~/dotfiles/.vimrc.basic
+" ステータスライン
+source ~/dotfiles/.vimrc.statusline
+" 表示関連
+source ~/dotfiles/.vimrc.appearance
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+" 検索関連
+source ~/dotfiles/.vimrc.search
+" 移動関連
+source ~/dotfiles/.vimrc.moving
+" 編集関連
+source ~/dotfiles/.vimrc.editing
+" プラグインごとの設定
+source ~/dotfiles/.vimrc.plugins_setting
 
-" let Vundle manage Vundle
-" required! 
-Bundle 'gmarik/vundle'
 
-" My Bundles here:
-"
-" original repos on github
-Bundle 'thinca/vim-ref'
 
-filetype plugin indent on     " required!
-
-"phpmanualの設定
-let g:ref_phpmanual_path = $HOME.'/.vim/php-chunked-xhtml'
-nmap ,rp :<C-u>Ref phpmanual<Space>
